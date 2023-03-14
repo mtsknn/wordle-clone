@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Input() {
+function Input({ addGuess }) {
   const [text, setText] = useState('');
 
   /** @param {React.ChangeEvent<HTMLInputElement>} e */
@@ -16,7 +16,7 @@ function Input() {
   /** @param {React.FormEvent<HTMLFormElement>} e */
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('word is', text);
+    addGuess(text);
     setText('');
   };
 

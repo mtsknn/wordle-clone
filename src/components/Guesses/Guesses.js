@@ -1,12 +1,13 @@
 import React from 'react';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import { checkGuess } from '../../game-helpers';
 import { range } from '../../utils';
 
-function Guesses({ guesses }) {
+function Guesses({ answer, guesses }) {
   return (
     <div className="guess-results">
       {range(0, NUM_OF_GUESSES_ALLOWED).map((i) => (
-        <Guess key={i} word={guesses[i] || ''} />
+        <Guess answer={answer} key={i} word={guesses[i]} />
       ))}
     </div>
   );
@@ -14,12 +15,17 @@ function Guesses({ guesses }) {
 
 export default Guesses;
 
-function Guess({ word }) {
+function Guess({ answer, word }) {
+  const statuses = word && checkGuess(word, answer);
+
   return (
     <p className="guess">
       {range(0, 5).map((i) => (
-        <span className="cell" key={i}>
-          {word[i]}
+        <span
+          className={statuses ? `cell ${statuses[i].status}` : 'cell'}
+          key={i}
+        >
+          {statuses?.[i].letter}
         </span>
       ))}
     </p>

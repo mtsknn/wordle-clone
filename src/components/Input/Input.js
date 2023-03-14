@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Input({ addGuess }) {
+function Input({ addGuess, disabled }) {
   const [text, setText] = useState('');
 
   /** @param {React.ChangeEvent<HTMLInputElement>} e */
@@ -25,6 +25,7 @@ function Input({ addGuess }) {
       <label>
         Enter guess:
         <input
+          disabled={disabled}
           onChange={onChange}
           pattern="[a-zA-Z]{5}"
           required

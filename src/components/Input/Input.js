@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { WORD_LENGTH } from '../../constants';
 
 function Input({ addGuess, disabled }) {
   const [text, setText] = useState('');
@@ -8,7 +9,7 @@ function Input({ addGuess, disabled }) {
     setText(
       e.target.value
         .replace(/[^a-z]/gi, '')
-        .substring(0, 5)
+        .substring(0, WORD_LENGTH)
         .toUpperCase()
     );
   };
@@ -27,9 +28,9 @@ function Input({ addGuess, disabled }) {
         <input
           disabled={disabled}
           onChange={onChange}
-          pattern="[a-zA-Z]{5}"
+          pattern={`[a-zA-Z]{${WORD_LENGTH}}`}
           required
-          title="5 letters (A-Z)"
+          title={`${WORD_LENGTH} letters (A-Z)`}
           type="text"
           value={text}
         />

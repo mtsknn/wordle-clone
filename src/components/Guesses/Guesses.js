@@ -1,5 +1,5 @@
 import React from 'react';
-import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import { NUM_OF_GUESSES_ALLOWED, WORD_LENGTH } from '../../constants';
 import { checkGuess } from '../../game-helpers';
 import { range } from '../../utils';
 
@@ -20,7 +20,7 @@ function Guess({ answer, word }) {
 
   return (
     <p className="guess">
-      {range(0, 5).map((i) => (
+      {range(WORD_LENGTH).map((i) => (
         <span
           className={statuses ? `cell ${statuses[i].status}` : 'cell'}
           key={i}

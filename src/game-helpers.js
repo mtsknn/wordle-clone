@@ -1,3 +1,4 @@
+import { WORD_LENGTH } from './constants';
 import { range } from './utils';
 
 /**
@@ -64,10 +65,11 @@ export function checkLetter(letter, answer, guesses) {
     return 'incorrect';
   }
 
-  const len = answer.length;
   if (
     guesses.some((guess) =>
-      range(len).some((i) => letter === guess[i] && guess[i] === answer[i])
+      range(WORD_LENGTH).some(
+        (i) => letter === guess[i] && guess[i] === answer[i]
+      )
     )
   ) {
     return 'correct';

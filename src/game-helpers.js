@@ -1,8 +1,9 @@
+import { range } from './utils';
+
 /**
  * Thanks to Github user dylano for supplying a more-accurate
  * solving algorithm!
  */
-
 export function checkGuess(guess, answer) {
   // This constant is a placeholder that indicates we've successfully
   // dealt with this character (it's correct, or misplaced).
@@ -52,4 +53,25 @@ export function checkGuess(guess, answer) {
   }
 
   return result;
+}
+
+export function checkLetter(letter, answer, guesses) {
+  if (!guesses.some((guess) => guess.includes(letter))) {
+    return 'unused';
+  }
+
+  if (!answer.includes(letter)) {
+    return 'incorrect';
+  }
+
+  const len = answer.length;
+  if (
+    guesses.some((guess) =>
+      range(len).some((i) => letter === guess[i] && guess[i] === answer[i])
+    )
+  ) {
+    return 'correct';
+  }
+
+  return 'misplaced';
 }

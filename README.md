@@ -1,5 +1,13 @@
 # Word Game
 
+- [x] Exercise 1
+- [x] Exercise 2
+- [x] Exercise 3
+- [x] Exercise 4
+- [x] Exercise 5
+- [x] Stretch goal 1
+- [x] Stretch goal 2
+
 ## Joy of React, Project I
 
 In this project, we'll recreate a popular online word game, Wordle:
@@ -225,10 +233,7 @@ The user wins the game when their guessed word is identical to the `answer`. The
 
 ```html
 <div class="happy banner">
-  <p>
-    <strong>Congratulations!</strong> Got it in
-    <strong>3 guesses</strong>.
-  </p>
+  <p><strong>Congratulations!</strong> Got it in <strong>3 guesses</strong>.</p>
 </div>
 ```
 
